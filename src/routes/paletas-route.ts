@@ -1,16 +1,17 @@
-import { Router, Request, Response } from 'express'
+import { Router } from 'express'
+import { Validation } from '../middleware/validations'
 
 const router = Router()
 
 router
   .route('/paletas')
-  .get((req: Request, res: Response) => { res.send({ message: 'conectado' }) })
-  .post()
+  .get()
+  .post(Validation.infoValidation)
 
 router
   .route('/paletas/:id')
-  .get()
-  .put()
-  .delete()
+  .get(Validation.idValidation)
+  .put(Validation.idValidation, Validation.infoValidation)
+  .delete(Validation.idValidation)
 
 export { router }
