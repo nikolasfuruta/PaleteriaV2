@@ -5,11 +5,10 @@ import connectDB from '../db/prisma-connect'
 
 export class App {
   init: Express
-  db: Promise<void>
 
   constructor () {
     this.init = express()
-    this.db = this.conn()
+    void this.conn()
     this.config()
     this.routes()
   }
@@ -27,3 +26,5 @@ export class App {
     this.init.use(router)
   }
 }
+
+export const app = new App().init
