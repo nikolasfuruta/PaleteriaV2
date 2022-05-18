@@ -1,19 +1,20 @@
 import express, { Express } from 'express'
 import cors from 'cors'
 import { router } from '../routes/paletas-route'
-import { connectDB } from '../db/db-config'
+import connectDB from '../db/prisma-connect'
 
 export class App {
   init: Express
+  db: Promise<void>
 
   constructor () {
     this.init = express()
-    void this.db()
+    this.db = this.conn()
     this.config()
     this.routes()
   }
 
-  private async db (): Promise<void> {
+  private async conn (): Promise<void> {
     await connectDB()
   }
 
