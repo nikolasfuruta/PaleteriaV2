@@ -6,6 +6,7 @@ import helmet from 'helmet'
 
 export class App {
   init: Express
+  private readonly port!: string
 
   constructor () {
     this.init = express()
