@@ -45,12 +45,14 @@ export class ControllerPaletas {
   //   }
   // }
 
-  // static async remove (req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const result = await servicePaletas
-  //   } catch (e) {
-  //     console.error(e)
-  //     res.status(400).send({ message: 'Paleta não deletada' })
-  //   }
-  // }
+  static async remove (req: Request, res: Response): Promise<void> {
+    try {
+      const id = req.params.id
+      const result = await ServicePaletas.remove(id)
+      res.status(200).send(result)
+    } catch (e) {
+      console.error(e)
+      res.status(400).send({ message: 'Paleta não encontrada' })
+    }
+  }
 }

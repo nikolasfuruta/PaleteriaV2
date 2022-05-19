@@ -13,6 +13,6 @@ router
   .route('/paletas/:id')
   .get(Validation.idValidation, ControllerPaletas.getOne)
   .put(Validation.idValidation, Validation.infoValidation)
-  .delete(Validation.idValidation)
+  .delete(Validation.idValidation, ControllerPaletas.remove)
 
 export { router }

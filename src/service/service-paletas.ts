@@ -22,4 +22,13 @@ export class ServicePaletas {
     }
     return result
   }
+
+  public static async remove (id: string): Promise<paletas> {
+    const result = await prisma.paletas.delete({ where: { id: id } })
+    if (result !== null) {
+      return result
+    } else {
+      throw new Error('ID not found')
+    }
+  }
 }
