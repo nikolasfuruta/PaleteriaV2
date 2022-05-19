@@ -8,7 +8,7 @@ export class Validation {
       !(req.params.id) ||
       mongoose.Types.ObjectId.isValid(req.params.id)
     ) {
-      throw new Error('id inválido')
+      res.status(405).send({ message: 'ID inválido' })
     }
     next()
   }
@@ -21,7 +21,7 @@ export class Validation {
       !(req.body.descricao) || typeof (req.body.descricao) !== typeof ('') ||
       !(req.body.valor) || typeof (req.body.valor) !== typeof (1.0)
     ) {
-      throw new Error('parâmetros do body inválidos')
+      res.status(405).send({ message: 'parâmetros do body inválidos' })
     }
     next()
   }
