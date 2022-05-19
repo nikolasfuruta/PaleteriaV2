@@ -36,14 +36,17 @@ export class ControllerPaletas {
     }
   }
 
-  // static async update (req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const result = await servicePaletas
-  //   } catch (e) {
-  //     console.error(e)
-  //     res.status(400).send({ message: 'Paleta não atualizada' })
-  //   }
-  // }
+  static async update (req: Request, res: Response): Promise<void> {
+    try {
+      const id = req.params.id
+      const info = req.body
+      const result = await ServicePaletas.update(id, info)
+      res.status(200).send(result)
+    } catch (e) {
+      console.error(e)
+      res.status(400).send({ message: 'Paleta não encontrada' })
+    }
+  }
 
   static async remove (req: Request, res: Response): Promise<void> {
     try {

@@ -12,7 +12,7 @@ router
 router
   .route('/paletas/:id')
   .get(Validation.idValidation, ControllerPaletas.getOne)
-  .put(Validation.idValidation, Validation.infoValidation)
+  .put(Validation.idValidation, Validation.infoValidation, ControllerPaletas.update)
   .delete(Validation.idValidation, ControllerPaletas.remove)
 
 export { router }

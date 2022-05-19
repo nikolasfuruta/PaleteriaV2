@@ -31,4 +31,13 @@ export class ServicePaletas {
       throw new Error('ID not found')
     }
   }
+
+  public static async update (id: string, info: any): Promise<paletas> {
+    const result = await prisma.paletas.update({ where: { id: id }, data: info })
+    if (result !== null) {
+      return result
+    } else {
+      throw new Error('ID not found')
+    }
+  }
 }
