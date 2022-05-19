@@ -7,7 +7,7 @@ const router = Router()
 router
   .route('/paletas')
   .get(ControllerPaletas.getAll)
-  .post(Validation.infoValidation)
+  .post(Validation.infoValidation, ControllerPaletas.create)
 
 router
   .route('/paletas/:id')

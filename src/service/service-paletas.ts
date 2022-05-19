@@ -14,4 +14,12 @@ export class ServicePaletas {
       throw new Error('ID not found')
     }
   }
+
+  public static async create (info: any): Promise<paletas> {
+    const result = await prisma.paletas.create({ data: info })
+    if (!result || result === null) {
+      throw new Error('Failed to create new paleta')
+    }
+    return result
+  }
 }

@@ -25,14 +25,16 @@ export class ControllerPaletas {
     }
   }
 
-  // static async create (req: Request, res: Response): Promise<void> {
-  //   try {
-  //     const result = await servicePaletas
-  //   } catch (e) {
-  //     console.error(e)
-  //     res.status(400).send({ message: 'Paleta não adicionada' })
-  //   }
-  // }
+  static async create (req: Request, res: Response): Promise<void> {
+    try {
+      const info = req.body
+      const result = await ServicePaletas.create(info)
+      res.status(200).send(result)
+    } catch (e) {
+      console.error(e)
+      res.status(400).send({ message: 'Paleta não adicionada' })
+    }
+  }
 
   // static async update (req: Request, res: Response): Promise<void> {
   //   try {
