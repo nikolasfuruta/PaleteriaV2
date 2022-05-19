@@ -1,17 +1,18 @@
 import { Router } from 'express'
 import { Validation } from '../middleware/validations'
+import { ControllerPaletas } from '../controller/paletas-controller'
 
 const router = Router()
 
 router
   .route('/paletas')
-  .get()
-  .post(Validation.infoValidation)
+  .get(ControllerPaletas.getAll)
+  .post(Validation.infoValidation, ControllerPaletas.create)
 
 router
   .route('/paletas/:id')
-  .get(Validation.idValidation)
-  .put(Validation.idValidation, Validation.infoValidation)
-  .delete(Validation.idValidation)
+  .get(Validation.idValidation, ControllerPaletas.getOne)
+  .put(Validation.idValidation, Validation.infoValidation, ControllerPaletas.update)
+  .delete(Validation.idValidation, ControllerPaletas.remove)
 
 export { router }
