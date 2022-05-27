@@ -1,0 +1,5 @@
+{
+  "hooks": {
+    "pre-commit": "npx prisma generate && lint-staged"
+  }
+}
